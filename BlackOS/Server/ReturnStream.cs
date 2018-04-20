@@ -46,7 +46,6 @@ namespace BlackOS.Server
         {
             try
             {
-                Console.WriteLine("Sending Kill con to " + (Soc.RemoteEndPoint as IPEndPoint).Address);
                 BaseStream.Write(new byte[1] { 4 },0,1);
                 BaseStream.Dispose();
                 Soc.Disconnect(false);
@@ -56,7 +55,7 @@ namespace BlackOS.Server
             {
 
                 if (!Program.SHUTDOWN)
-                    Console.WriteLine("Failed to Close ReturnStream");
+                    Console.WriteLine($"ERROR:Failed to Close ReturnStream for ({(Soc.RemoteEndPoint as IPEndPoint).Address})");
             }
         }
 

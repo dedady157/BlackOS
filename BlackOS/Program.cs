@@ -2,8 +2,6 @@
 
 using System;
 using Ev3DevLib;
-using Ev3DevLib.Motors;
-using Ev3DevLib.Sensors;
 using BlackOS.CMD;
 using BlackOS.Server;
 using BlackOS.PluginHandler;
@@ -18,11 +16,16 @@ namespace BlackOS
         public static bool SHUTDOWN = false;
         static void Main(string[] args)
         {
+            {
+                string s = System.Reflection.Assembly.GetExecutingAssembly().CodeBase.Substring(7);
+                Environment.CurrentDirectory = s.Substring(0, s.LastIndexOf("/") + 2);//sets the WorkingDirectory to the program path
+            }
             ControllServer Serv = null;
             //Console.TreatControlCAsInput=true;
 
             Console.Clear();
             Console.WriteLine("Verifying Enviroment");
+            Console.WriteLine("WD:" + Environment.CurrentDirectory);
             if (!Directory.Exists(PluginSettings.PluginPath))
             {
                 Directory.CreateDirectory(PluginSettings.PluginPath);
@@ -118,6 +121,7 @@ namespace BlackOS
             while (!SHUTDOWN) ;
 
             Console.WriteLine("ShutdownCalled");
+
             Console.WriteLine("Stopping Plugins");
             PluginController.CleanUpPlugins();
             Console.WriteLine("Plugins Stopped, GoodBye!");

@@ -82,7 +82,6 @@ namespace BlackOS.Server
         private void ProcessConn(Object OBJ_conn)
         {
             Connection conn = (Connection)OBJ_conn;
-            Console.WriteLine("processing command from: " + (conn.Soc.RemoteEndPoint as IPEndPoint).Address);
             conn.Soc.BeginReceive(conn.buffer, 0, 10, 0,new AsyncCallback(ReadAndProcessProcPacket), conn);
         }
         private void ReadAndProcessProcPacket(IAsyncResult R)
@@ -104,9 +103,7 @@ namespace BlackOS.Server
 
                 conn.Soc.Send(BitConverter.GetBytes(ServerCodes.Success));
                 ReturnStream RS = new ReturnStream(conn.Soc);
-                Console.WriteLine("Executing command: "+ExecCode);
                 CommandsList.Execute(ExecCode, AsciiArgs, RS);
-                Console.WriteLine("CommandExitted");
                 RS.Close();
             }
             else

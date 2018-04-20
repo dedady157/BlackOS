@@ -39,7 +39,7 @@ namespace BlackOS.CMD
         {
             if (string.IsNullOrEmpty(Name) || Name.Contains(" "))
             {
-                Console.WriteLine("Failed TO Hook Command -r Command Name is invalid");
+                Console.WriteLine("Failed To Hook Command, Command Name is invalid");
             }
             else
             {
@@ -50,11 +50,11 @@ namespace BlackOS.CMD
                 }
                 if (inuse)
                 {
-                    Console.WriteLine("Failed To Hook Command -r Command Name is inuse");
+                    Console.WriteLine("Failed To Hook Command, Command Name is inuse");
                 }
                 else if (Commands.ContainsKey(CommandID))
                 {
-                    Console.WriteLine("Failed To Hook Command -r Command ID is in use");
+                    Console.WriteLine("Failed To Hook Command, Command ID is in use");
                     if (!string.IsNullOrEmpty(OnErrorHelpText))
                     {
                         Console.WriteLine("HelpText:" + OnErrorHelpText);
@@ -66,7 +66,7 @@ namespace BlackOS.CMD
                 }
                 else
                 {
-                    Console.WriteLine("Failed To Hook Command -r FunctionLink is invalid");
+                    Console.WriteLine("Failed To Hook Command, FunctionLink is invalid");
                     if (!string.IsNullOrEmpty(OnErrorHelpText))
                     {
                         Console.WriteLine("HelpText:" + OnErrorHelpText);
@@ -78,7 +78,7 @@ namespace BlackOS.CMD
         {
             if (string.IsNullOrEmpty(Name) || Name.Contains(" "))
             {
-                Console.WriteLine("Failed To Hook Command -r Command Name is invalid");
+                Console.WriteLine("Failed To Hook Command, Command Name is invalid");
             }
             else
             {
@@ -89,11 +89,11 @@ namespace BlackOS.CMD
                 }
                 if(inuse)
                 {
-                    Console.WriteLine("Failed TO Hook Command -r Command Name is inuse");
+                    Console.WriteLine("Failed TO Hook Command, Command Name is inuse");
                 }
                 else if (Commands.ContainsKey(CommandID))
                 {
-                    Console.WriteLine("Failed To Hook Command -r Command ID is in use");
+                    Console.WriteLine("Failed To Hook Command, Command ID is in use");
                 }
                 else if (FunctionLink != null)
                 {
@@ -101,7 +101,7 @@ namespace BlackOS.CMD
                 }
                 else
                 {
-                    Console.WriteLine("Failed To Hook Command -r FunctionLink is invalid");
+                    Console.WriteLine("Failed To Hook Command, FunctionLink is invalid");
                 }
             }
         }

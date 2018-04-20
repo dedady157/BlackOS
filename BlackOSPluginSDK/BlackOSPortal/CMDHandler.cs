@@ -1,5 +1,4 @@
 ﻿using System;
-using BlackOSPluginSDK;
 namespace BlackOSPluginSDK.BlackOSPortal
 {
     public struct CMDHandler
